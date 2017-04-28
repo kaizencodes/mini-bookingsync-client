@@ -1,0 +1,21 @@
+%h1 Bookings
+%table{class: 'table table-striped'}
+  %thead
+    %tr
+      %th Client email
+      %th Start at
+      %th End at
+      %th Price
+      %th{:colspan => "3"}
+  %tbody
+    - @bookings.each do |booking|
+      %tr
+        %td= booking.client_email
+        %td= booking.start_at
+        %td= booking.end_at
+        %td= booking.price
+        %td= link_to 'Show', booking_path(booking.id), class: 'btn btn-info'
+        %td= link_to 'Edit', edit_booking_path(booking.id), class: 'btn btn-warning'
+        %td= link_to 'Destroy', booking_path(booking.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+-# %br/
+= link_to 'New Booking', new_booking_path, class: 'btn btn-primary'

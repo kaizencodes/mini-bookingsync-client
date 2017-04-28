@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Client email:
+  = @booking.client_email
+%p
+  %b Start at:
+  = @booking.start_at
+%p
+  %b End at:
+  = @booking.end_at
+%p
+  %b Price:
+  = @booking.price
+
+= link_to 'Edit', edit_booking_path(@booking.id)
+\|
+= link_to 'Back', bookings_path

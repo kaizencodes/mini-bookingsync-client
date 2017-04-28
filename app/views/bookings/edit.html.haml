@@ -1,0 +1,16 @@
+.col-md-8
+  = simple_form_for :booking, url: booking_path(@booking.id), method: :put do |f|
+    - if @booking.errors
+      #error_explanation
+        %h3
+          = pluralize(@booking.errors.count, "error")
+          prohibited this booking from being saved:
+        %ul
+          - @booking.errors.each do |key, message|
+            %li= key + ": " + message.join(", ")
+    = f.input :client_email, input_html: { value: @booking.client_email }
+    = f.input :start_at, as: :date, input_html: { value: @booking.start_at }
+    = f.input :end_at, as: :date, input_html: { value: @booking.end_at }
+    #p
+      = @booking.price
+    = f.button :submit, class: 'btn btn-primary'

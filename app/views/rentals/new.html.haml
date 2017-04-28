@@ -1,7 +1,6 @@
 .col-md-8
   = simple_form_for :rental, url: rentals_path, method: :post do |f|
     - if @rental.errors
-      - p @rental.errors.count
       #error_explanation
         %h3
           = pluralize(@rental.errors.count, "error")
