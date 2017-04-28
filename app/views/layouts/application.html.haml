@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title MiniBookingsyncClient
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag "https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    .container
+      = render 'layouts/header'
+      - flash.each do |name, msg|
+        = content_tag(:div, msg, class: flash_class(name))
+      = yield

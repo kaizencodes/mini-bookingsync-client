@@ -1,0 +1,13 @@
+.col-md-8
+  = simple_form_for :rental, url: rental_path(@rental.id), method: :put do |f|
+    - if @rental.errors
+      #error_explanation
+        %h3
+          = pluralize(@rental.errors.count, "error")
+          prohibited this rental from being saved:
+        %ul
+          - @rental.errors.each do |key, message|
+            %li= key + ": " + message.join(", ")
+    = f.input :name, input_html: { value: @rental.name }
+    = f.input :daily_rate, as: :integer, input_html: { value: @rental.daily_rate }
+    = f.button :submit, class: 'btn btn-primary'

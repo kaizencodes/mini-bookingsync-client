@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @rental.name
+%p
+  %b Daily rate:
+  = @rental.daily_rate
+
+= link_to 'Edit', edit_rental_path(@rental.id)
+\|
+= link_to 'Back', rentals_path

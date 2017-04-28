@@ -30,14 +30,23 @@ Metrics/PerceivedComplexity:
 
 Style/ClassAndModuleChildren:
   Enabled: false
-  
+
+Style/ClassVars:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 
 Style/FileName:
   Enabled: false
 
+Style/GuardClause:
+  Enabled: false
+
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/RegexpLiteral:
   Enabled: false
 
 Style/StringLiterals:
