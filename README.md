@@ -1,24 +1,9 @@
-# README
+# Mini-BookingSync Client
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an example project for https://www.bookingsync.com/
 
-Things you may want to cover:
+Companion app for [Mini-BookingSync Api](https://github.com/kaizencodes/mini-bookingsync-api)
 
-* Ruby version
+The connection config are loaded from config/api.yml
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To run in development: just start the api, then the client, on a port other than 3000
