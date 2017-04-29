@@ -1,0 +1,9 @@
+default: &default
+  url: "http://localhost:3000"
+  token: global_token
+
+development:
+  <<: *default
+
+test:
+  <<: *default

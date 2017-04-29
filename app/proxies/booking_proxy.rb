@@ -1,36 +1,16 @@
-class BookingProxy
-  def initialize
-    @conn = Faraday.new(url: "http://localhost:3000")
-  end
-
-  def all
-    response = @conn.get "/bookings?token=global_token"
-    JSON.parse(response.body)
-  end
-
-  def find(id)
-    response = @conn.get "/bookings/" + id.to_s + "/?token=global_token"
-    JSON.parse(response.body)
+class BookingProxy < Proxy
+  def path
+    "bookings"
   end
 
   def create(params)
-    @conn.post do |req|
-      req.url "/bookings"
-      req.headers["Content-Type"] = "application/json"
-      req.params = { booking: params.to_h, token: "global_token" }
-    end
+    booking_params = { booking: params.to_h }
+    super(booking_params)
   end
 
   def update(id, params)
-    @conn.put do |req|
-      req.url "/bookings/" + id.to_s
-      req.headers["Content-Type"] = "application/json"
-      req.params = { bookings: params.to_h, token: "global_token" }
-    end
-  end
-
-  def destroy(id)
-    @conn.delete "/bookings/" + id.to_s + "/?token=global_token"
+    booking_params = { booking: params.to_h }
+    super(id, booking_params)
   end
 
   def get_price(to, from, rental_id)
