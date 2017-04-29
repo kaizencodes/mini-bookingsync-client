@@ -3,6 +3,7 @@
   %thead
     %tr
       %th Client email
+      %th Rental
       %th Start at
       %th End at
       %th Price
@@ -11,8 +12,9 @@
     - @bookings.each do |booking|
       %tr
         %td= booking.client_email
-        %td= booking.start_at
-        %td= booking.end_at
+        %td= booking.rental.name
+        %td= booking.start_at.to_date
+        %td= booking.end_at.to_date
         %td= booking.price
         %td= link_to 'Show', booking_path(booking.id), class: 'btn btn-info'
         %td= link_to 'Edit', edit_booking_path(booking.id), class: 'btn btn-warning'

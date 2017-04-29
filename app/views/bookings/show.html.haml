@@ -3,12 +3,17 @@
 %p
   %b Client email:
   = @booking.client_email
+
+%p
+  %b Rental:
+  = @booking.rental.name
+
 %p
   %b Start at:
-  = @booking.start_at
+  = @booking.start_at.to_date
 %p
   %b End at:
-  = @booking.end_at
+  = @booking.end_at.to_date
 %p
   %b Price:
   = @booking.price

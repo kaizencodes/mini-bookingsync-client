@@ -9,8 +9,9 @@
           - @booking.errors.each do |key, message|
             %li= key + ": " + message.join(", ")
     = f.input :client_email, input_html: { value: @booking.client_email }
-    = f.input :start_at, input_html: { "data-provide" => 'datepicker', "data-date-format" => "yyyy-mm-dd", value: @booking.start_at }
-    = f.input :end_at, input_html: { "data-provide" => 'datepicker', "data-date-format" => "yyyy-mm-dd", value: @booking.end_at }
-    #p
-      = @booking.price
+    = f.input :rental_id, collection: Rental.all.map { |r| [r.name, r.id] }, input_html: { value: @booking.rental_id, class: 'reload_price' }
+    = f.input :start_at, input_html: { "data-provide" => 'datepicker', "data-date-format" => "yyyy-mm-dd", value: @booking.start_at.to_date, class: 'reload_price' }
+    = f.input :end_at, input_html: { "data-provide" => 'datepicker', "data-date-format" => "yyyy-mm-dd", value: @booking.end_at.to_date, class: 'reload_price' }
+    %h3{id: "price"}
+      Price: #{@booking.price}
     = f.button :submit, class: 'btn btn-primary'

@@ -13,9 +13,9 @@ class BookingProxy < Proxy
     super(id, booking_params)
   end
 
-  def get_price(to, from, rental_id)
+  def calculate_price(to, from, rental_id)
     response = @conn.get do |req|
-      req.url "/bookings/get_price"
+      req.url "/bookings/calculate_price"
       req.headers["Content-Type"] = "application/json"
       req.params = { to: to, from: from, rental_id: rental_id, token: "global_token" }
     end
