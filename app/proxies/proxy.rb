@@ -1,5 +1,5 @@
 require "yaml"
-API = YAML.load_file('config/api.yml')[Rails.env]
+API = YAML.load_file("config/api.yml")[Rails.env]
 
 class Proxy
   def initialize
@@ -21,7 +21,7 @@ class Proxy
     @conn.post do |req|
       req.url "/#{path}/"
       req.headers["Content-Type"] = "application/json"
-      req.params = params.merge({token: @token})
+      req.params = params.merge(token: @token)
     end
   end
 
@@ -29,7 +29,7 @@ class Proxy
     @conn.put do |req|
       req.url "/#{path}/" + id.to_s
       req.headers["Content-Type"] = "application/json"
-      req.params = params.merge({token: @token})
+      req.params = params.merge(token: @token)
     end
   end
 
@@ -38,6 +38,6 @@ class Proxy
   end
 
   def path
-    raise 'Called abstract method: path'
+    raise "Called abstract method: path"
   end
 end

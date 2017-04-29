@@ -1,5 +1,4 @@
 class RentalProxy < Proxy
-
   def path
     "rentals"
   end

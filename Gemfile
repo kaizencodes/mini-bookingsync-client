@@ -58,9 +58,9 @@ end
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "bootstrap", "~> 4.0.0.alpha6"
+gem "bootstrap-datepicker-rails"
 gem "faraday"
 gem "haml"
 gem "haml-rails", "~> 0.9"
 gem "simple_form"
 gem "webmock"
-gem 'bootstrap-datepicker-rails'
