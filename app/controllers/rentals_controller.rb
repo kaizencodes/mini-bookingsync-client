@@ -1,5 +1,4 @@
 class RentalsController < ApplicationController
-  before_action :set_proxy
   before_action :set_rental, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -47,11 +46,6 @@ class RentalsController < ApplicationController
   end
 
   private
-
-  # Use callbacks to share common setup or constraints between actions.
-  def set_proxy
-    @rental_proxy = RentalProxy.new
-  end
 
   def set_rental
     @rental = Rental.find(params[:id])

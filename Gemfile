@@ -63,3 +63,4 @@ gem "haml"
 gem "haml-rails", "~> 0.9"
 gem "simple_form"
 gem "webmock"
+gem 'bootstrap-datepicker-rails'

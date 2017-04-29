@@ -11,7 +11,6 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
-    @rentals = Rental.all
   end
 
   def create
