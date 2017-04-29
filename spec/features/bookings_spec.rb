@@ -1,27 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Bookings" do
-  let(:booking) do
-    { id: "1", client_email: "example@email.com", start_at: Date.today, end_at: Date.tomorrow, price: 1}
-  end
-  let(:rental) do
-    { id: "1", name: "Foobar", daily_rate: 1 }
-  end
-  let(:base_uri) { /\/bookings/ }
-  let(:base_rental_uri) { /\/rentals/ }
-  let(:sub_uri) { /\/bookings\/[0-9]+/ }
-
-  before(:example) do
-    stub_request(:get, base_uri)
-      .to_return(status: :ok, body: [booking].to_json)
-    stub_request(:get, base_rental_uri)
-      .to_return(status: :ok, body: [rental].to_json)
-    stub_request(:post, base_uri)
-    stub_request(:put, base_uri)
-    stub_request(:get, sub_uri)
-      .to_return(status: :ok, body: booking.to_json)
-    stub_request(:delete, sub_uri)
-  end
+  include_examples "stubs"
 
   feature "index page", type: :feature do
     before(:example) { visit bookings_path }
@@ -30,6 +10,9 @@ RSpec.describe "Bookings" do
       expect(page).to have_css "h1", text: "Bookings"
       expect(page).to have_css "th", text: "Client email"
       expect(page).to have_css "td", text: booking[:client_email]
+
+      expect(page).to have_css "th", text: "Rental"
+      expect(page).to have_css "td", text: rental[:name]
 
       expect(page).to have_css "th", text: "Start at"
       expect(page).to have_css "td", text: booking[:start_at]
@@ -72,6 +55,9 @@ RSpec.describe "Bookings" do
       expect(page).to have_css "b", text: "Client email"
       expect(page).to have_content booking[:client_email]
 
+      expect(page).to have_css "b", text: "Rental"
+      expect(page).to have_content rental[:name]
+
       expect(page).to have_css "b", text: "Start at"
       expect(page).to have_content booking[:start_at]
 
@@ -103,8 +89,8 @@ RSpec.describe "Bookings" do
 
     scenario "fill out form correctly" do
       fill_in "booking[client_email]", with: booking[:client_email]
-      # fill_in "booking[start_at]", with: booking[:start_at]
-      # fill_in "booking[end_at]", with: booking[:end_at]
+      fill_in "booking[start_at]", with: booking[:start_at]
+      fill_in "booking[end_at]", with: booking[:end_at]
 
       click_button "Save Booking"
 
@@ -117,8 +103,8 @@ RSpec.describe "Bookings" do
 
     scenario "fill out form correctly" do
       fill_in "booking[client_email]", with: booking[:client_email]
-      # fill_in "booking[start_at]", with: booking[:start_at]
-      # fill_in "booking[end_at]", with: booking[:end_at]
+      fill_in "booking[start_at]", with: booking[:start_at]
+      fill_in "booking[end_at]", with: booking[:end_at]
 
       click_button "Save Booking"
 
